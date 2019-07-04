@@ -27,10 +27,18 @@ namespace GUIgra
         {
             GroupBoxLosuj.Visible = true;
             NowaGra.Enabled = false;
-            Wylosuj.Visible = true;
-            Zgadywana.Visible = true;
-            Sprawdz.Visible = true;
+            Sprawdz.Enabled = false;
+            Historia.Enabled = false;
+            Zgadywana.Enabled = false;
+            Pauza.Enabled = false;
             Komentarz.Visible = false;
+            WylosowanaLiczba.Visible = false;
+            LiczbaProb.Visible = false;
+            Czasomierz.Visible = false;
+            Od.Enabled = true;
+            Do.Enabled = true;
+            Wylosuj.Enabled = true;
+            czas = 0;
         }
 
         private void Wylosuj_Click(object sender, EventArgs e)
@@ -42,11 +50,16 @@ namespace GUIgra
 
             RandomNumber = Losowanie.Next(od, doo);
 
+            Od.Enabled = false;
+            Do.Enabled = false;
+            Wylosuj.Enabled = false;
             Zgadywana.Enabled = true;
             Pauza.Enabled = true;
             Sprawdz.Enabled = true;
+            Historia.Enabled = true;
             timer1.Start();
             Czasomierz.Visible = true;
+
         }
 
         private void Sprawdz_Click(object sender, EventArgs e)
@@ -73,6 +86,7 @@ namespace GUIgra
                 {
                     Komentarz.Text = "To Big";
                     Komentarz.ForeColor = Color.Red;
+
                 }
                 else if (ConNumber < RandomNumber)
                 {
@@ -83,6 +97,8 @@ namespace GUIgra
                 {
                     Komentarz.Text = "Correct";
                     Komentarz.ForeColor = Color.Green;
+                    timer1.Stop();
+                    NowaGra.Enabled = true;
                 }
             }
             isNumber = false;
@@ -136,15 +152,15 @@ namespace GUIgra
             Do.Text = " ";
         }
 
-        private void Zgadywana_MouseClick(object sender, EventArgs e)
-        {
-            Zgadywana.Text = " ";
-        }
-
         private void Timer1_Tick(object sender, EventArgs e)
         {
             czas++;
             Czasomierz.Text = "Czas gry " + czas;
+        }
+
+        private void Zgadywana_MouseClick(object sender, MouseEventArgs e)
+        {
+            Zgadywana.Text = " ";
         }
     }
 }

@@ -123,8 +123,7 @@
             this.Zgadywana.Name = "Zgadywana";
             this.Zgadywana.Size = new System.Drawing.Size(100, 20);
             this.Zgadywana.TabIndex = 5;
-            this.Zgadywana.Text = "Zgadywana";
-            this.Zgadywana.TextChanged += new System.EventHandler(this.Zgadywana_MouseClick);
+            this.Zgadywana.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Zgadywana_MouseClick);
             // 
             // Pauza
             // 
@@ -213,6 +212,7 @@
             this.Czasomierz.Size = new System.Drawing.Size(60, 13);
             this.Czasomierz.TabIndex = 5;
             this.Czasomierz.Text = "Czasomierz";
+            this.Czasomierz.Visible = false;
             // 
             // Form1
             // 
