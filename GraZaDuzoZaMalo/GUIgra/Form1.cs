@@ -21,7 +21,18 @@ namespace GUIgra
         private int od;
         private int doo;
         bool pauza = false;
-        int czas = 0;
+        private System.Timers.Timer time1;
+
+        int s, m, h;
+
+        private void StartTimer()
+        {
+            time1 = new System.Timers.Timer();
+            time1.Interval = 1000;
+            time1.Elapsed += OnTimeEvent;
+            time1.AutoReset = true;
+            time1.Enabled = true;
+        }
 
         private void NowaGra_Click(object sender, EventArgs e)
         {
@@ -38,7 +49,10 @@ namespace GUIgra
             Od.Enabled = true;
             Do.Enabled = true;
             Wylosuj.Enabled = true;
-            czas = 0;
+            s = 0;
+            m = 0;
+            h = 0;
+            Czasomierz.Text = "00:00:00";
         }
 
         private void Wylosuj_Click(object sender, EventArgs e)
@@ -55,11 +69,11 @@ namespace GUIgra
             Wylosuj.Enabled = false;
             Zgadywana.Enabled = true;
             Pauza.Enabled = true;
+            pauza = true;
             Sprawdz.Enabled = true;
             Historia.Enabled = true;
-            timer1.Start();
             Czasomierz.Visible = true;
-
+            StartTimer();
         }
 
         private void Sprawdz_Click(object sender, EventArgs e)
@@ -97,8 +111,11 @@ namespace GUIgra
                 {
                     Komentarz.Text = "Correct";
                     Komentarz.ForeColor = Color.Green;
-                    timer1.Stop();
+                    time1.Dispose();
                     NowaGra.Enabled = true;
+                    Pauza.Enabled = false;
+                    Sprawdz.Enabled = false;
+                    Zgadywana.Enabled = false;
                 }
             }
             isNumber = false;
@@ -111,24 +128,18 @@ namespace GUIgra
             if(pauza)
             {
                 Pauza.Text = "Wznów";
-                Od.Enabled = false;
-                Do.Enabled = false;
                 Sprawdz.Enabled = false;
                 Zgadywana.Enabled = false;
-                Wylosuj.Enabled = false;
                 pauza = false;
-                timer1.Stop();
+                time1.Stop();
             }
-            else
+            else 
             {
                 Pauza.Text = "Pauza";
-                Od.Enabled = true;
-                Do.Enabled = true;
                 Sprawdz.Enabled = true;
                 Zgadywana.Enabled = true;
-                Wylosuj.Enabled = true;
                 pauza = true;
-                timer1.Start();
+                time1.Start();
             }
         }
 
@@ -139,7 +150,7 @@ namespace GUIgra
 
         private void Informacje_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Autor: Sebastian Żak \nProjekt Zaliczeniowy na Labolatoria");
         }
 
         private void Od_MouseClick(object sender, MouseEventArgs e)
@@ -152,10 +163,23 @@ namespace GUIgra
             Do.Text = " ";
         }
 
-        private void Timer1_Tick(object sender, EventArgs e)
+        private void OnTimeEvent(object sender, System.Timers.ElapsedEventArgs e)
         {
-            czas++;
-            Czasomierz.Text = "Czas gry " + czas;
+            Invoke(new Action(() =>
+            {
+                s += 1;
+                if (s == 60)
+                {
+                    s = 0;
+                    m += 1;
+                }
+                if (m == 60)
+                {
+                    m = 0;
+                    h += 1;
+                }
+                Czasomierz.Text = string.Format("{0}:{1}:{2}", h.ToString().PadLeft(2, '0'), m.ToString().PadLeft(2, '0'), s.ToString().PadLeft(2,'0')) ;
+            }));
         }
 
         private void Zgadywana_MouseClick(object sender, MouseEventArgs e)

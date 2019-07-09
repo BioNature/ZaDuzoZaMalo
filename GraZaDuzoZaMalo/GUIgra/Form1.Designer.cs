@@ -44,7 +44,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Historia = new System.Windows.Forms.Button();
             this.Informacje = new System.Windows.Forms.Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.Czasomierz = new System.Windows.Forms.Label();
             this.GroupBoxLosuj.SuspendLayout();
             this.SuspendLayout();
@@ -83,7 +82,7 @@
             // LiczbaProb
             // 
             this.LiczbaProb.AutoSize = true;
-            this.LiczbaProb.Location = new System.Drawing.Point(12, 251);
+            this.LiczbaProb.Location = new System.Drawing.Point(8, 251);
             this.LiczbaProb.Name = "LiczbaProb";
             this.LiczbaProb.Size = new System.Drawing.Size(63, 13);
             this.LiczbaProb.TabIndex = 8;
@@ -92,7 +91,7 @@
             // WylosowanaLiczba
             // 
             this.WylosowanaLiczba.AutoSize = true;
-            this.WylosowanaLiczba.Location = new System.Drawing.Point(6, 185);
+            this.WylosowanaLiczba.Location = new System.Drawing.Point(8, 181);
             this.WylosowanaLiczba.Name = "WylosowanaLiczba";
             this.WylosowanaLiczba.Size = new System.Drawing.Size(102, 13);
             this.WylosowanaLiczba.TabIndex = 7;
@@ -111,7 +110,7 @@
             // Komentarz
             // 
             this.Komentarz.AutoSize = true;
-            this.Komentarz.Location = new System.Drawing.Point(7, 136);
+            this.Komentarz.Location = new System.Drawing.Point(8, 144);
             this.Komentarz.Name = "Komentarz";
             this.Komentarz.Size = new System.Drawing.Size(57, 13);
             this.Komentarz.TabIndex = 6;
@@ -164,7 +163,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 64);
+            this.label2.Location = new System.Drawing.Point(8, 67);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 1;
@@ -173,7 +172,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 32);
+            this.label1.Location = new System.Drawing.Point(8, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 0;
@@ -181,7 +180,7 @@
             // 
             // Historia
             // 
-            this.Historia.Location = new System.Drawing.Point(377, 607);
+            this.Historia.Location = new System.Drawing.Point(377, 447);
             this.Historia.Name = "Historia";
             this.Historia.Size = new System.Drawing.Size(75, 23);
             this.Historia.TabIndex = 3;
@@ -191,34 +190,30 @@
             // 
             // Informacje
             // 
-            this.Informacje.Location = new System.Drawing.Point(12, 607);
+            this.Informacje.Location = new System.Drawing.Point(12, 447);
             this.Informacje.Name = "Informacje";
             this.Informacje.Size = new System.Drawing.Size(75, 23);
             this.Informacje.TabIndex = 4;
             this.Informacje.Text = "Informacje";
             this.Informacje.UseVisualStyleBackColor = true;
             this.Informacje.Click += new System.EventHandler(this.Informacje_Click);
-            // 
-            // timer1
-            // 
-            this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
+
             // 
             // Czasomierz
             // 
             this.Czasomierz.AutoSize = true;
-            this.Czasomierz.Location = new System.Drawing.Point(21, 341);
+            this.Czasomierz.Location = new System.Drawing.Point(23, 330);
             this.Czasomierz.Name = "Czasomierz";
-            this.Czasomierz.Size = new System.Drawing.Size(60, 13);
+            this.Czasomierz.Size = new System.Drawing.Size(49, 13);
             this.Czasomierz.TabIndex = 5;
-            this.Czasomierz.Text = "Czasomierz";
+            this.Czasomierz.Text = "00:00:00";
             this.Czasomierz.Visible = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(464, 642);
+            this.ClientSize = new System.Drawing.Size(464, 483);
             this.Controls.Add(this.Czasomierz);
             this.Controls.Add(this.Informacje);
             this.Controls.Add(this.Historia);
@@ -250,7 +245,6 @@
         private System.Windows.Forms.Button Informacje;
         private System.Windows.Forms.Label LiczbaProb;
         private System.Windows.Forms.Label WylosowanaLiczba;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label Czasomierz;
     }
 }
